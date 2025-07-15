@@ -5,8 +5,21 @@ using TMPro;
 
 public class ScoreCounting : MonoBehaviour
 {
-    public int diamondCount = 0;
     public TextMeshProUGUI scoreText;
+    public static ScoreCounting Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -15,20 +28,11 @@ public class ScoreCounting : MonoBehaviour
 
     public void AddDiamond(int amount)
     {
-        diamondCount += amount;
         UpdateScoreUI();
-    }
-
-    public int CalculateFinalScore(float timeLeft)
-    {
-        int timeBonus = Mathf.FloorToInt(timeLeft * 2); // 1 detik = 2 poin (bisa kamu ubah)
-        int diamondScore = diamondCount * 10;           // 1 diamond = 10 poin (bisa kamu ubah)
-        return diamondScore + timeBonus;
     }
 
     public void ResetScore()
     {
-        diamondCount = 0;
         UpdateScoreUI();
     }
 
@@ -36,7 +40,13 @@ public class ScoreCounting : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = "Score: " + (diamondCount * 10);
+            scoreText.text = "Score: " + GameManager.Instance.totalScore;
         }
+    }
+
+    public void SetScoreText(TextMeshProUGUI newScoreText)
+    {
+        scoreText = newScoreText;
+        UpdateScoreUI();
     }
 }

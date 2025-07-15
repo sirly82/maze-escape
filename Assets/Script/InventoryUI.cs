@@ -11,6 +11,12 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         diamondText = GetComponent<TextMeshProUGUI>();
+
+        if (PlayerInventory.Instance != null)
+        {
+            UpdateDiamondText(PlayerInventory.Instance);
+            PlayerInventory.Instance.OnDiamondCollected.AddListener(UpdateDiamondText);
+        }
     }
 
     public void UpdateDiamondText(PlayerInventory playerInventory)
