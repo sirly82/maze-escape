@@ -38,4 +38,11 @@ public class GameManager : MonoBehaviour
         totalScore = 0;
         diamondCount = 0;
     }
+
+    public void DecreaseScore(int amount)
+    {
+        totalScore -= amount;
+        totalScore = Mathf.Max(0, totalScore); // Pastikan score tidak kurang dari 0
+        ScoreCounting.Instance.UpdateScoreUI();
+    }
 }

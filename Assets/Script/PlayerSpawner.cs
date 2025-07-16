@@ -7,10 +7,16 @@ public class PlayerSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.FindWithTag("Player") != null)
+        GameObject player = GameObject.FindWithTag("Player");
+
+        if (player != null)
         {
-            GameObject player = GameObject.FindWithTag("Player");
+            Debug.Log("Player ditemukan, dipindahkan ke spawn point!");
             player.transform.position = transform.position;
+        }
+        else
+        {
+            Debug.LogWarning("Player tidak ditemukan di scene.");
         }
     }
 }

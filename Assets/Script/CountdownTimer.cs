@@ -54,6 +54,7 @@ public class CountdownTimer : MonoBehaviour
 
     void GameOver()
     {
+        AudioManager.Instance.PlayLoseMusic();
         Debug.Log("Waktu habis! Game Over!");
         SceneManager.LoadScene("lose");
     }

@@ -5,10 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class StartTrigger : MonoBehaviour
 {
-    private void OnTriggerEnter()
+    private void OnTriggerEnter(Collider other)
     {
-        // to restart our same scenes... When we exit in enter direction
-        // it will restart the same scene when we get out in start position
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (other.CompareTag("Player"))
+        {
+            PlayerRespawn respawn = other.GetComponent<PlayerRespawn>();
+            if (respawn != null)
+            {
+                respawn.RespawnToStart();
+            }
+            else
+            {
+                Debug.LogWarning("Player tidak punya komponen PlayerRespawn!");
+            }
+        }
     }
 }

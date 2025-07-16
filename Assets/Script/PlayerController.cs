@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.X))
             {
+                AudioManager.Instance.PlayPlayerJump();
                 verticalVelocity = jumpForce;
                 isJump = true;
             }

@@ -3,17 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obtacles
+  - Enemy
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obtacles
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - EnemyHead
   - 
   - 
   - 

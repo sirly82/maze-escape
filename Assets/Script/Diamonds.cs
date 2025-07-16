@@ -8,13 +8,19 @@ public class Diamonds : MonoBehaviour
     {
         PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
 
-        if(playerInventory != null)
+        if (other.CompareTag("Player"))
+        {
+            AudioManager.Instance.PlayDiamond();
+            gameObject.SetActive(false);
+        }
+
+        if (playerInventory != null)
         {
             playerInventory.DiamondCollected();
 
             ScoreCounting scoreCounting = other.GetComponent<ScoreCounting>();
 
-            if(scoreCounting != null)
+            if (scoreCounting != null)
             {
                 scoreCounting.AddDiamond(1);
             }

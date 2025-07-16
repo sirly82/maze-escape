@@ -16,6 +16,7 @@ public class TimeBonus : MonoBehaviour
                 timer.AddTime(timeToAdd);
             }
 
+            AudioManager.Instance.PlayTimeBonus();
             Destroy(gameObject);
         }
     }

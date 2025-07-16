@@ -7,8 +7,18 @@ public class EndTrigger : MonoBehaviour
 {
     private void OnTriggerEnter()
     {
-        // to start our upcoming scenes
-        // this is to control our scene order by we add in build settings
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "level2")
+        {
+            AudioManager.Instance.PlayWinMusic();
+            Debug.Log("Player sudah di level 2, masuk ke scene WIN");
+            SceneManager.LoadScene("win");
+        }
+        else
+        {
+            Debug.Log("Lanjut ke level berikutnya");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

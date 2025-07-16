@@ -50,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
+        AudioManager.Instance.PlayLoseMusic();
         Debug.Log("Game Over!");
         SceneManager.LoadScene("lose");
     }
